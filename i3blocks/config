@@ -1,0 +1,165 @@
+# i3blocks config file
+#
+# Please see man i3blocks for a complete reference!
+# The man page is also hosted at http://vivien.github.io/i3blocks
+#
+# List of valid properties:
+#
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
+
+# Global properties
+#
+# The top properties below are applied to every block, but can be overridden.
+# Each block command defaults to the script name to avoid boilerplate.
+# Change $SCRIPT_DIR to the location of your scripts!
+command=$SCRIPT_DIR/$BLOCK_NAME
+separator_block_width=15
+markup="pango"
+
+#=============================
+# Github
+#=============================
+#[github]
+#command=$SCRIPT_DIR/github/github
+#interval=60
+#label=open
+#format=json
+#markup=pango
+
+#=============================
+# RAM Memory usage
+#=============================
+[memory]
+command=$SCRIPT_DIR/memory/memory
+label=󰍛
+interval=30
+color=#8fa1b3
+
+#=============================
+# Home usage
+#=============================
+[disk]
+label=
+command=$SCRIPT_DIR/disk/disk $HOME
+interval=30
+color=#f1fa8c
+
+#=============================
+# Root usage
+#=============================
+[disk]
+label=
+command=$SCRIPT_DIR/disk/disk
+interval=30
+color=#BD93F9
+
+#=============================
+# Temperature
+#=============================
+[temperature]
+command=$SCRIPT_DIR/temperature/temperature
+label=
+color=#8bfddb
+interval=10
+#T_WARN=70
+#T_CRIT=90
+#SENSOR_CHIP=""
+
+#=============================
+# CPU
+#=============================
+[cpu_usage]
+label=
+command=$SCRIPT_DIR/cpu_usage/cpu_usage
+interval=10
+#min_width=CPU 100.00%
+#separator=false
+
+#=============================
+# MediaPlayer
+#=============================
+#[mediaplayer]
+#label=
+#color=#50fab0
+#command=$SCRIPT_DIR/mediaplayer/mediaplayer
+#instance=spotify
+#interval=5
+#signal=10
+
+#=============================
+# Spotify
+#=============================
+[spotify]
+label=
+command=python3 $SCRIPT_DIR/spotify/spotify.py
+color=#50fab0
+interval=5
+
+#=============================
+# Volume
+#=============================
+[volume]
+command=$SCRIPT_DIR/volume/volume
+label=󰕾
+separator=false
+interval=1
+signal=10
+color=#ff79c6
+markup=pango
+
+#=============================
+# Mic
+#=============================
+
+[miccontrol]
+command=$SCRIPT_DIR/miccontrol/miccontrol
+color=#ff79c6
+interval=10
+signal=10
+
+#=============================
+# Weather
+#=============================
+[weather]
+command=curl -sS 'https://wttr.in/Rio_de_Janeiro?format=%c%t'
+interval=1200
+
+#=============================
+# Time
+#=============================
+[time]
+command=date '+%A %d.%m. %H:%M:%S'
+label=󰃰
+interval=1
+color=#f8f8f2
+
+#=============================
+# Uptime
+#=============================
+[uptime]
+label= 
+command=uptime | sed 's/.*up \([^,]*\),.*/\1/'
+color=#8fa1b3
+interval=60
+
+#=============================
+# Shutdown menu
+#=============================
+[shutdown_menu]
+full_text=
+command=$SCRIPT_DIR/shutdown_menu/shutdown_menu
+min_width=16
+color=#ff5555
