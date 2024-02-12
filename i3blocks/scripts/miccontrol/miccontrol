@@ -1,0 +1,17 @@
+#!/bin/bash
+
+SOURCE="alsa_input.usb-Kingston_HyperX_Cloud_Alpha_S_000000000001-00.mono-fallback.2"
+
+case $BLOCK_BUTTON in
+    1|3) pactl set-source-mute "$SOURCE" toggle ;;
+esac
+
+case $(pactl list sources | grep -A 11 "$SOURCE" | awk '/Mute:/ {print $2; exit}') in
+    yes)
+      echo ""
+      ;;
+    no)
+      echo ""
+      ;;
+esac
+
